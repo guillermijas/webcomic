@@ -1,5 +1,7 @@
 lock "3.9.1"
 
+set :user, 'deploy'
+
 set :application, 'webcomic'
 set :repo_url, 'git@github.com:guillermijas/webcomic.git' # Edit this to match your repository
 set :branch, :master
