@@ -10,6 +10,7 @@ gem 'aws-sdk', '~> 3'
 gem 'bootstrap', '~> 4.0.0.beta'
 gem 'cancancan'
 gem 'devise'
+gem 'figaro'
 gem 'font-awesome-sass', '~> 4.7.0'
 gem 'haml-rails'
 gem 'jbuilder', '~> 2.5'
@@ -32,6 +33,11 @@ group :development, :test do
 end
 
 group :development do
+  gem 'capistrano'
+  gem 'capistrano3-puma'
+  gem 'capistrano-rails', require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano-rvm'
   gem 'listen', '~> 3.0.5'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
@@ -39,3 +45,4 @@ group :development do
 end
 
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
+
