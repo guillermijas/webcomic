@@ -1,4 +1,4 @@
-lock "3.9.1"
+lock "3.5.0"
 
 set :user, 'deploy'
 
