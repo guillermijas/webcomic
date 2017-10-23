@@ -1,0 +1,12 @@
+= simple_form_for(@comic) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.association :user
+    = f.input :title
+    = f.input :price
+    = f.input :category
+    = f.input :average_rating
+
+  .form-actions
+    = f.button :submit

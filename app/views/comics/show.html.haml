@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b User:
+  = @comic.user
+%p
+  %b Title:
+  = @comic.title
+%p
+  %b Price:
+  = @comic.price
+%p
+  %b Category:
+  = @comic.category
+%p
+  %b Average rating:
+  = @comic.average_rating
+
+= link_to 'Edit', edit_comic_path(@comic)
+\|
+= link_to 'Back', comics_path

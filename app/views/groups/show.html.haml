@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Forum:
+  = @group.forum
+%p
+  %b User:
+  = @group.user
+%p
+  %b Title:
+  = @group.title
+%p
+  %b Text:
+  = @group.text
+
+= link_to 'Edit', edit_group_path(@group)
+\|
+= link_to 'Back', groups_path

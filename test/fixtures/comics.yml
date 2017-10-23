@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  title: MyString
+  price: 1.5
+  category: MyString
+  average_rating: 1.5
+
+two:
+  user: two
+  title: MyString
+  price: 1.5
+  category: MyString
+  average_rating: 1.5

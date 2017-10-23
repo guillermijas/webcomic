@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Comic:
+  = @publication.comic
+%p
+  %b Free:
+  = @publication.free
+%p
+  %b Page:
+  = @publication.page
+%p
+  %b Text:
+  = @publication.text
+
+= link_to 'Edit', edit_publication_path(@publication)
+\|
+= link_to 'Back', publications_path

@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Comic:
+  = @forum.comic
+%p
+  %b Topic:
+  = @forum.topic
+
+= link_to 'Edit', edit_forum_path(@forum)
+\|
+= link_to 'Back', forums_path

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  comic: one
+  free: 
+  page: 1
+  text: 
+
+two:
+  comic: two
+  free: 
+  page: 1
+  text: 
