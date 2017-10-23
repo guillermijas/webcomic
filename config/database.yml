@@ -21,5 +21,10 @@ test:
   database: db/test.sqlite3
 
 production:
-  <<: *default
-  database: db/production.sqlite3
+  adapter: mysql2
+  encoding: utf8
+  database: ebdb
+  username: root
+  password: adminwebcomic
+  host: aa1qdtcphorrge3.cuauwgcgclf0.eu-central-1.rds.amazonaws.com
+  port: 3306
