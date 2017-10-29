@@ -4,8 +4,43 @@ $gray: #dddddd;
   background-color: $gray;
 }
 
-.loginform{
+.login-body {
+  padding: 40px;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;;
+  background-image: url(comic-bg.jpg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .login-container {
+    border-top: 14px solid #d19b3d;
+    background-color: #2e353d;
+    padding: 30px;
+    width: 500px;
+    p, label, a, span, h1, h2 {
+      color: white;
+    }
+    .form-actions{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      a{
+        margin-left: 10px;
+      }
+    }
+    abbr{
+      color: red;
+    }
+    .help-block{
+      color: #996666;
+    }
+  }
+}
 
+.loginform{
   margin-top: 40px;
   padding: 20px;
   max-width: 300px;
@@ -18,7 +53,7 @@ $gray: #dddddd;
 }
 
 .form-group{
-  input[type=email], input[type=password]{
+  input[type=email], input[type=password], input[type=date] {
     width: 100%;
   }
 }
