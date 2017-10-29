@@ -1,29 +1,72 @@
-%h1 Listing comics
+-#%h1 Listing comics
+-#
+-#%table
+-#  %thead
+-#    %tr
+-#      %th User
+-#      %th Title
+-#      %th Price
+-#      %th Category
+-#      %th Average rating
+-#      %th
+-#      %th
+-#      %th
+-#
+-#  %tbody
+-#    - @comics.each do |comic|
+-#      %tr
+-#        %td= comic.user
+-#        %td= comic.title
+-#        %td= comic.price
+-#        %td= comic.category
+-#        %td= comic.average_rating
+-#        %td= link_to 'Show', comic
+-#        %td= link_to 'Edit', edit_comic_path(comic)
+-#        %td= link_to 'Destroy', comic, method: :delete, data: { confirm: 'Are you sure?' }
+-#
+-#%br
 
-%table
-  %thead
-    %tr
-      %th User
-      %th Title
-      %th Price
-      %th Category
-      %th Average rating
-      %th
-      %th
-      %th
+%nav.navbar.navbar-fixed-top.navbar-expand-lg.navbar-dark.bg-primary
+  %a.navbar-brand{:href => comics_path}
+    %img.d-inline-block.align-top{src:'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Green_lantern.png/600px-Green_lantern.png', "height" => "30px", "width" => "30px"}
+    WebComic
+  %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", :type => "button"}
+    %span.navbar-toggler-icon
+  #navbarSupportedContent.collapse.navbar-collapse
+    %ul.navbar-nav.mr-auto
+      %li.nav-item
+        = link_to 'New Comic', new_comic_path, class: "btn btn-outline-light my-2 my-sm-0", type: "button"
+      %li.nav-item.active
+        = link_to 'All', comics_path, class: "nav-link", type: "button"
+      %li.nav-item
+        = link_to 'News', comics_path, class: "nav-link", type: "button"
+      %li.nav-item
+        = link_to 'Most value', comics_path, class: "nav-link", type: "button"
+      %li.nav-item
+        = link_to 'Free', comics_path, class: "nav-link", type: "button"
+      %li.nav-item
+        = link_to 'Favourites', comics_path, class: "nav-link", type: "button"
+    =form_tag comics_path, class:"form-inline my-2 my-lg-0", :method => 'get' do
+      =text_field_tag :search, params[:search], class:"form-control mr-sm-2", "aria-label" => "Search", :placeholder => "Search", :type => "search"
+      =submit_tag 'Search', class:"btn btn-outline-light my-2 my-sm-0", :type => "submit"
 
-  %tbody
-    - @comics.each do |comic|
-      %tr
-        %td= comic.user
-        %td= comic.title
-        %td= comic.price
-        %td= comic.category
-        %td= comic.average_rating
-        %td= link_to 'Show', comic
-        %td= link_to 'Edit', edit_comic_path(comic)
-        %td= link_to 'Destroy', comic, method: :delete, data: { confirm: 'Are you sure?' }
+.container-fluid
+  .row
 
-%br
+    .col-md-10
+      %div.container-fluid.comics-list
+        .row.justify-content-center
+          - @comics.each do |comic|
+            %div.col-sm-6.col-md-4.col-lg-3.col-xl-2.panel.center-block
+              %div.panel-heading
+                %img{src:'https://tse4.mm.bing.net/th?id=OIP.v5Y2VrH2Bb8k0_vBWTj_DQDcEs&pid=15.1&P=0&w=300&h=300', "width"=>"90%", "height"=>"90%"}
+              %div.panel-body
+                = comic.title
+        %br
+        %div.pagination-lg.justify-content-center
+          - if @comics.length > 1
+            .justify-content-center.badge.badge-light.page-link= will_paginate @comics
 
-= link_to 'New Comic', new_comic_path
+    .col-md-2
+      .sidebar-nav-fixed.pull-right.affix
+        %img.d-inline-block.advertising{src:'https://i.pinimg.com/736x/27/9d/cf/279dcfa578638f1cfd3b026d43ddfd39--always-coca-cola-vintage-coca-cola.jpg',"width" => "100%"}

@@ -4,7 +4,22 @@ class ComicsController < ApplicationController
   # GET /comics
   # GET /comics.json
   def index
-    @comics = Comic.all
+    lmt = 10;
+
+    if params[:search]
+      @comics = Comic.where(["title LIKE ?", "%#{params[:search].strip}%"])
+    else
+      @comics = Comic.all.order(:title).paginate(:page => params[:page], :per_page => lmt)
+    end
+
+    #@comics = Comic.all #paginate(:page => params[:page], :per_page => 5)
+    #@q = Comic.ransack(params[:q])
+#
+    #if params[:title].nil?
+    #  @comics = @q.result.order(:title).paginate(page: params[:page], per_page: lmt)
+    #else
+    #  @comics = @q.result.where('title LIKE ?', "%#{params[:title]}%").order(:title)
+    #end
   end
 
   # GET /comics/1

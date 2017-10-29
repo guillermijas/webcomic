@@ -1,3 +1,55 @@
 // Place all the styles related to the Comics controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+//.navbar-fixed-top{
+//  position: fixed;
+//  width: 100%;
+//  top: 0;
+//  left: 0;
+//}
+
+body{
+  //margin: 70px !important;
+  background-image: url(https://cdn.catawiki.net/assets/marketing/marketing/upload_images-files/29797-3f5b9ae11068c067ad6bec3f1ae0b561c2f091cd-original.jpg);
+  background-repeat:no-repeat;
+  background-size: cover;
+  background-attachment:fixed;
+}
+
+
+.comics-list{
+
+  text-align: center;
+  position: absolute;
+  align-items: center;
+
+  .panel{
+    //border: dotted;
+    margin: 10px;
+    padding: 4px;
+    box-shadow: 0px 0px 5px 2px #99ccff;
+    background-color: #0066cc;
+    width: 100%;
+    border-radius: 10px 10px 10px 10px;
+
+    .panel-body{
+      margin:5px;
+      padding: 5px;
+      background-color: #99ccff;
+      border-radius: 4px 4px 4px 4px;
+    }
+
+    .panel-header{
+      margin: 5px;
+      img{
+        border-radius: 4px 4px 4px 4px;
+      }
+    }
+  }
+}
+
+.advertising{
+  margin-top: 10px;
+  box-shadow: 0px 0px 5px 2px #99ccff;
+}

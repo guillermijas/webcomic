@@ -16,6 +16,7 @@ gem 'font-awesome-sass', '>= 4.7.0'
 gem 'haml-rails'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
+gem 'jquery'
 gem 'mysql2'
 gem 'paperclip'
 gem 'puma', '~> 3.7'
@@ -25,6 +26,7 @@ gem 'simple_form'
 gem 'truncate_html'
 gem 'turbolinks', '~> 5'
 gem 'uglifier', '>= 1.3.0'
+gem 'will_paginate'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
