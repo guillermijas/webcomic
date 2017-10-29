@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171023195444) do
+ActiveRecord::Schema.define(version: 20171029220437) do
 
   create_table "comics", force: :cascade do |t|
     t.integer "user_id"
@@ -20,6 +20,10 @@ ActiveRecord::Schema.define(version: 20171023195444) do
     t.float "average_rating"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "cover_file_name"
+    t.string "cover_content_type"
+    t.integer "cover_file_size"
+    t.datetime "cover_updated_at"
     t.index ["user_id"], name: "index_comics_on_user_id"
   end
 
@@ -61,6 +65,12 @@ ActiveRecord::Schema.define(version: 20171023195444) do
     t.index ["user_id"], name: "index_payments_on_user_id"
   end
 
+  create_table "projects", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "publications", force: :cascade do |t|
     t.integer "comic_id"
     t.boolean "free"
@@ -68,6 +78,10 @@ ActiveRecord::Schema.define(version: 20171023195444) do
     t.text "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "attachment_file_name"
+    t.string "attachment_content_type"
+    t.integer "attachment_file_size"
+    t.datetime "attachment_updated_at"
     t.index ["comic_id"], name: "index_publications_on_comic_id"
   end
 
