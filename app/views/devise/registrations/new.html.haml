@@ -1,26 +1,27 @@
-.container
-  .gray.center.editprofile
-    %h2.text-center Sign up
+.login-body
+  .login-container
+    %h1.text-center Sign up
     %br
     = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-      .form-group
-        = f.input :email, label: 'E-mail', required: true
-      .form-group
-        = f.input :password, label: 'Contraseña', required: true
-      .form-group
-        = f.input :password_confirmation, label: 'Confirmar contraseña', required: true
-      .form-group
-        = f.input :first_name, label: 'Nombre', required: true
-      .form-group
-        = f.input :last_name, label: 'Apellidos', required: true
-      .form-group
-        %label Foto de perfil
-        = f.file_field :avatar
-
-      %br
+      .row
+        .col-md-6
+          .form-group
+            = f.input :email, label: 'E-mail', required: true
+          .form-group
+            = f.input :password, label: 'Password', required: true
+          .form-group
+            = f.input :password_confirmation, label: 'Confirm password', required: true
+        .col-md-6
+          .form-group
+            = f.input :first_name, label: 'First Name', required: true
+          .form-group
+            = f.input :last_name, label: 'Last Name', required: true
+          .form-group
+            = f.input :birth_date, label: 'Birth Date (YYYY-MM-DD)', required: true, as: :date, placeholder: 'YYYY-MM-DD', html5: true
+        %br
       .actions.text-center
         .row
           .col
-            = f.button :submit, 'Enviar', class: 'btn btn-success'
+            = f.button :submit, 'Done!', class: 'btn btn-success'
           .col
-            = link_to 'Volver', new_user_session_path, class: 'btn btn-primary'
+            = link_to 'Back', new_user_session_path, class: 'btn btn-secondary'
