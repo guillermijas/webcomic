@@ -26,3 +26,5 @@
 
 .elasticbeanstalk/
 .idea/
+.ebextensions/
+public/system/
