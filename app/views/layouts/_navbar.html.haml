@@ -1,0 +1,24 @@
+%nav.navbar.navbar-expand-lg.comics-nav
+  =link_to(comics_path, class: 'navbar-brand') do
+    = image_tag(image_path('logo-green-lantern.png'), height: 30, width: 30)
+    WebComic
+  %button.navbar-dark.navbar-toggler{'data-target': '#navbarSupportedContent', 'data-toggle': 'collapse', type: 'button'}
+    %span.navbar-toggler-icon
+  #navbarSupportedContent.collapse.navbar-collapse
+    %ul.navbar-nav.mr-auto
+      %li.nav-item
+        = link_to 'New Comic', new_comic_path, class: 'btn btn-secondary', type: 'button'
+      %li.nav-item.active
+        =link_to 'Comics', comics_path, class: 'nav-link'
+      %li.nav-item
+        = link_to 'Newest', comics_path, class: 'nav-link', type: 'button'
+      %li.nav-item
+        = link_to 'Top rated', comics_path, class: 'nav-link', type: 'button'
+      %li.nav-item
+        = link_to 'Free', comics_path, class: 'nav-link', type: 'button'
+      %li.nav-item
+        = link_to 'Favourites', comics_path, class: 'nav-link', type: 'button'
+    %form.form-inline.my-2.my-lg-0
+      %input.form-control.mr-sm-2{placeholder: 'Search', :type => 'search'}
+      %button.btn.btn-outline-success.my-2.my-sm-0{type: 'submit'}
+        = icon('search')

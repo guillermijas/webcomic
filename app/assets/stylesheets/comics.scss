@@ -1,25 +1,44 @@
-// Place all the styles related to the Comics controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
-//.navbar-fixed-top{
-//  position: fixed;
-//  width: 100%;
-//  top: 0;
-//  left: 0;
-//}
-
 body{
   //margin: 70px !important;
-  background-image: url(https://cdn.catawiki.net/assets/marketing/marketing/upload_images-files/29797-3f5b9ae11068c067ad6bec3f1ae0b561c2f091cd-original.jpg);
-  background-repeat:no-repeat;
   background-size: cover;
-  background-attachment:fixed;
+  background: image_url('comic-bg.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  color: white;
 }
 
+.comics-nav {
+  background-color: #2e353d;
+  padding-bottom: 0;
+
+  .active {
+    border-bottom: 5px solid #d19b3d;
+    color: white;
+    &:hover{
+      border-bottom: none;
+    }
+  }
+
+  li {
+    margin-right: 15px;
+  }
+
+  .navbar-brand {
+    color: white;
+  }
+
+  .nav-link {
+    color: white;
+
+    &:hover{
+      border-bottom: 5px solid #d19b3d;
+    }
+  }
+}
 
 .comics-list{
-
   text-align: center;
   position: absolute;
   align-items: center;
@@ -28,7 +47,7 @@ body{
     //border: dotted;
     margin: 10px;
     padding: 4px;
-    box-shadow: 0px 0px 5px 2px #99ccff;
+    box-shadow: 0 0 5px 2px #99ccff;
     background-color: #0066cc;
     width: 100%;
     border-radius: 10px 10px 10px 10px;
@@ -51,5 +70,5 @@ body{
 
 .advertising{
   margin-top: 10px;
-  box-shadow: 0px 0px 5px 2px #99ccff;
+  box-shadow: 0 0 5px 2px #99ccff;
 }
