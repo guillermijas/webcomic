@@ -21,7 +21,8 @@
         .preview.col-md-6
           .preview-pic.tab-content
             #pic-1.tab-pane.active
-              %img{:alt => "Comic", :src => "https://files.genial.guru/files/news/part_30/303060/15598260-35670855-15751410-0-1477849147-1477849151-0-1478150569-0-1478261816-1478261822-650-7-1488295420-650-042f6972aa-1492087942.jpg", :style => "width:100%"}/
+              = link_to(comic_publications_path(@comic)) do
+                %img{:alt => "Comic", :src => "https://files.genial.guru/files/news/part_30/303060/15598260-35670855-15751410-0-1477849147-1477849151-0-1478150569-0-1478261816-1478261822-650-7-1488295420-650-042f6972aa-1492087942.jpg", :style => "width:100%"}/
         .details.col-md-6
           %h3.product-title
             %b
@@ -52,136 +53,6 @@
             %button.add-to-cart.btn.btn-primary{:type => "button"} add to cart
             %button.like.btn.btn-success{:type => "button"}
               %span.fa.fa-heart
-
-.container
-  %body{:style => "padding:0px; margin:0px; background-color:#fff;font-family:arial,helvetica,sans-serif,verdana,'Open Sans'"}
-
-    #jssor_1{:style => "position:relative;margin:0 auto;top:0px;left:0px;width:980px;height:480px;overflow:hidden;visibility:hidden;"}
-      / Loading Screen
-      .jssorl-009-spin{"data-u" => "loading", :style => "position:absolute;top:0px;left:0px;width:100%;height:100%;text-align:center;background-color:rgba(0,0,0,0.7);"}
-        %img{:src => "img/spin.svg", :style => "margin-top:-19px;position:relative;top:50%;width:38px;height:38px;"}/
-      %div{"data-u" => "slides", :style => "cursor:default;position:relative;top:0px;left:0px;width:980px;height:380px;overflow:hidden;"}
-        %div
-          %img{"data-u" => "image", :src => "https://s3-us-west-1.amazonaws.com/xyg-static/xygaming-comic-pokemon-have-rights-too.png"}/
-          %img{"data-u" => "thumb", :src => "https://s3-us-west-1.amazonaws.com/xyg-static/xygaming-comic-pokemon-have-rights-too.png"}/
-        %div
-          %img{"data-u" => "image", :src => "http://img1.joyreactor.com/pics/post/disney-relationship-comics-collegehumor-1879767.jpeg"}/
-          %img{"data-u" => "thumb", :src => "http://img1.joyreactor.com/pics/post/disney-relationship-comics-collegehumor-1879767.jpeg"}/
-        %div
-          %img{"data-u" => "image", :src => "http://fcfcp.com/wp-content/comics/fcfcp0012_sleepingbeauty_full.png"}/
-          %img{"data-u" => "thumb", :src => "http://fcfcp.com/wp-content/comics/fcfcp0012_sleepingbeauty_full.png"}/
-        %div
-          %img{"data-u" => "image", :src => "http://1.bp.blogspot.com/-X9UlGllPRLk/TvS9iSi1N2I/AAAAAAAADO0/PI8jrhYmIho/s1600/scc17.jpg"}/
-          %img{"data-u" => "thumb", :src => "http://1.bp.blogspot.com/-X9UlGllPRLk/TvS9iSi1N2I/AAAAAAAADO0/PI8jrhYmIho/s1600/scc17.jpg"}/
-        %div
-          %img{"data-u" => "image", :src => "https://www.bleedingcool.com/wp-content/uploads/2016/04/IMG_2911.jpg"}/
-          %img{"data-u" => "thumb", :src => "https://www.bleedingcool.com/wp-content/uploads/2016/04/IMG_2911.jpg"}/
-        %div
-          %img{"data-u" => "image", :src => "http://cdn2.upsocl.com/wp-content/uploads/2015/11/Portada10.jpg"}/
-          %img{"data-u" => "thumb", :src => "http://cdn2.upsocl.com/wp-content/uploads/2015/11/Portada10.jpg"}/
-        %div
-          %img{"data-u" => "image", :src => "https://st-listas.20minutos.es/images/2010-06/229694/2467771_640px.jpg?1277458597"}/
-          %img{"data-u" => "thumb", :src => "https://st-listas.20minutos.es/images/2010-06/229694/2467771_640px.jpg?1277458597"}/
-        / Thumbnail Navigator
-      .jssort101{"data-autocenter" => "1", "data-scale-bottom" => "0.75", "data-u" => "thumbnavigator", :style => "position:absolute;left:0px;bottom:0px;width:980px;height:100px;background-color:#000;"}
-        %div{"data-u" => "slides"}
-          .p{"data-u" => "prototype", :style => "width:190px;height:90px;"}
-            .t{"data-u" => "thumbnailtemplate"}
-            %svg.cv{:viewbox => "0 0 16000 16000"}
-              %circle.a{:cx => "8000", :cy => "8000", :r => "3238.1"}
-              %line.a{:x1 => "6190.5", :x2 => "9809.5", :y1 => "8000", :y2 => "8000"}
-              %line.a{:x1 => "8000", :x2 => "8000", :y1 => "9809.5", :y2 => "6190.5"}
-      / Arrow Navigator
-      .jssora106{"data-scale" => "0.75", "data-u" => "arrowleft", :style => "width:55px;height:55px;top:162px;left:30px;"}
-        %svg{:style => "position:absolute;top:0;left:0;width:100%;height:100%;", :viewbox => "0 0 16000 16000"}
-          %circle.c{:cx => "8000", :cy => "8000", :r => "6260.9"}
-          %polyline.a{:points => "7930.4,5495.7 5426.1,8000 7930.4,10504.3 "}
-          %line.a{:x1 => "10573.9", :x2 => "5426.1", :y1 => "8000", :y2 => "8000"}
-      .jssora106{"data-scale" => "0.75", "data-u" => "arrowright", :style => "width:55px;height:55px;top:162px;right:30px;"}
-        %svg{:style => "position:absolute;top:0;left:0;width:100%;height:100%;", :viewbox => "0 0 16000 16000"}
-          %circle.c{:cx => "8000", :cy => "8000", :r => "6260.9"}
-          %polyline.a{:points => "8069.6,5495.7 10573.9,8000 8069.6,10504.3 "}
-          %line.a{:x1 => "5426.1", :x2 => "10573.9", :y1 => "8000", :y2 => "8000"}
-
-    :javascript
-      jssor_1_slider_init = function() {
-
-          var jssor_1_SlideshowTransitions = [
-            {$Duration:800,x:0.3,$During:{$Left:[0.3,0.7]},$Easing:{$Left:$Jease$.$InCubic,$Opacity:$Jease$.$Linear},$Opacity:2},
-            {$Duration:800,x:-0.3,$SlideOut:true,$Easing:{$Left:$Jease$.$InCubic,$Opacity:$Jease$.$Linear},$Opacity:2},
-            {$Duration:800,x:-0.3,$During:{$Left:[0.3,0.7]},$Easing:{$Left:$Jease$.$InCubic,$Opacity:$Jease$.$Linear},$Opacity:2},
-            {$Duration:800,x:0.3,$SlideOut:true,$Easing:{$Left:$Jease$.$InCubic,$Opacity:$Jease$.$Linear},$Opacity:2},
-            {$Duration:800,y:0.3,$During:{$Top:[0.3,0.7]},$Easing:{$Top:$Jease$.$InCubic,$Opacity:$Jease$.$Linear},$Opacity:2},
-            {$Duration:800,y:-0.3,$SlideOut:true,$Easing:{$Top:$Jease$.$InCubic,$Opacity:$Jease$.$Linear},$Opacity:2},
-            {$Duration:800,y:-0.3,$During:{$Top:[0.3,0.7]},$Easing:{$Top:$Jease$.$InCubic,$Opacity:$Jease$.$Linear},$Opacity:2},
-            {$Duration:800,y:0.3,$SlideOut:true,$Easing:{$Top:$Jease$.$InCubic,$Opacity:$Jease$.$Linear},$Opacity:2},
-            {$Duration:800,x:0.3,$Cols:2,$During:{$Left:[0.3,0.7]},$ChessMode:{$Column:3},$Easing:{$Left:$Jease$.$InCubic,$Opacity:$Jease$.$Linear},$Opacity:2},
-            {$Duration:800,x:0.3,$Cols:2,$SlideOut:true,$ChessMode:{$Column:3},$Easing:{$Left:$Jease$.$InCubic,$Opacity:$Jease$.$Linear},$Opacity:2},
-            {$Duration:800,y:0.3,$Rows:2,$During:{$Top:[0.3,0.7]},$ChessMode:{$Row:12},$Easing:{$Top:$Jease$.$InCubic,$Opacity:$Jease$.$Linear},$Opacity:2},
-            {$Duration:800,y:0.3,$Rows:2,$SlideOut:true,$ChessMode:{$Row:12},$Easing:{$Top:$Jease$.$InCubic,$Opacity:$Jease$.$Linear},$Opacity:2},
-            {$Duration:800,y:0.3,$Cols:2,$During:{$Top:[0.3,0.7]},$ChessMode:{$Column:12},$Easing:{$Top:$Jease$.$InCubic,$Opacity:$Jease$.$Linear},$Opacity:2},
-            {$Duration:800,y:-0.3,$Cols:2,$SlideOut:true,$ChessMode:{$Column:12},$Easing:{$Top:$Jease$.$InCubic,$Opacity:$Jease$.$Linear},$Opacity:2},
-            {$Duration:800,x:0.3,$Rows:2,$During:{$Left:[0.3,0.7]},$ChessMode:{$Row:3},$Easing:{$Left:$Jease$.$InCubic,$Opacity:$Jease$.$Linear},$Opacity:2},
-            {$Duration:800,x:-0.3,$Rows:2,$SlideOut:true,$ChessMode:{$Row:3},$Easing:{$Left:$Jease$.$InCubic,$Opacity:$Jease$.$Linear},$Opacity:2},
-            {$Duration:800,x:0.3,y:0.3,$Cols:2,$Rows:2,$During:{$Left:[0.3,0.7],$Top:[0.3,0.7]},$ChessMode:{$Column:3,$Row:12},$Easing:{$Left:$Jease$.$InCubic,$Top:$Jease$.$InCubic,$Opacity:$Jease$.$Linear},$Opacity:2},
-            {$Duration:800,x:0.3,y:0.3,$Cols:2,$Rows:2,$During:{$Left:[0.3,0.7],$Top:[0.3,0.7]},$SlideOut:true,$ChessMode:{$Column:3,$Row:12},$Easing:{$Left:$Jease$.$InCubic,$Top:$Jease$.$InCubic,$Opacity:$Jease$.$Linear},$Opacity:2},
-            {$Duration:800,$Delay:20,$Clip:3,$Assembly:260,$Easing:{$Clip:$Jease$.$InCubic,$Opacity:$Jease$.$Linear},$Opacity:2},
-            {$Duration:800,$Delay:20,$Clip:3,$SlideOut:true,$Assembly:260,$Easing:{$Clip:$Jease$.$OutCubic,$Opacity:$Jease$.$Linear},$Opacity:2},
-            {$Duration:800,$Delay:20,$Clip:12,$Assembly:260,$Easing:{$Clip:$Jease$.$InCubic,$Opacity:$Jease$.$Linear},$Opacity:2},
-            {$Duration:800,$Delay:20,$Clip:12,$SlideOut:true,$Assembly:260,$Easing:{$Clip:$Jease$.$OutCubic,$Opacity:$Jease$.$Linear},$Opacity:2}
-          ];
-
-          var jssor_1_options = {
-            $AutoPlay: 1,
-            $Align: 0,
-            $SlideshowOptions: {
-              $Class: $JssorSlideshowRunner$,
-              $Transitions: jssor_1_SlideshowTransitions,
-              $TransitionsOrder: 1
-            },
-            $ArrowNavigatorOptions: {
-              $Class: $JssorArrowNavigator$
-            },
-            $ThumbnailNavigatorOptions: {
-              $Class: $JssorThumbnailNavigator$,
-              $Cols: 5,
-              $SpacingX: 5,
-              $SpacingY: 5,
-              $Align: 390
-            }
-          };
-
-          var jssor_1_slider = new $JssorSlider$("jssor_1", jssor_1_options);
-
-          /*#region responsive code begin*/
-
-          var MAX_WIDTH = 980;
-
-          function ScaleSlider() {
-              var containerElement = jssor_1_slider.$Elmt.parentNode;
-              var containerWidth = containerElement.clientWidth;
-
-              if (containerWidth) {
-
-                  var expectedWidth = Math.min(MAX_WIDTH || containerWidth, containerWidth);
-
-                  jssor_1_slider.$ScaleWidth(expectedWidth);
-              }
-              else {
-                  window.setTimeout(ScaleSlider, 30);
-              }
-          }
-
-          ScaleSlider();
-
-          $Jssor$.$AddEvent(window, "load", ScaleSlider);
-          $Jssor$.$AddEvent(window, "resize", ScaleSlider);
-          $Jssor$.$AddEvent(window, "orientationchange", ScaleSlider);
-          /*#endregion responsive code end*/
-      };
-
-      jssor_1_slider_init();
-
 
 
   = link_to 'Edit', edit_comic_path(@comic)
