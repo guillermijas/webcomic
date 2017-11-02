@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_parent_resources
   # GET /comments
   # GET /comments.json
   def index
@@ -25,14 +25,13 @@ class CommentsController < ApplicationController
   # POST /comments.json
   def create
     @comment = Comment.new(comment_params)
-
+    @comment.user_id = current_user.id
+    @comment.group_id = @thread.id
     respond_to do |format|
-      if @comment.save
-        format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
-        format.json { render :show, status: :created, location: @comment }
+      if @comment.save!
+        format.html { redirect_to comic_forum_group_path(@comic, @forum, @thread), notice: 'Comment was successfully created.' }
       else
-        format.html { render :new }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
+        format.html { redirect_to comic_forum_group_path(@comic, @forum, @thread) }
       end
     end
   end
@@ -62,13 +61,19 @@ class CommentsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_comment
-      @comment = Comment.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_comment
+    @comment = Comment.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def comment_params
-      params.require(:comment).permit(:user_id, :group_id, :body)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def comment_params
+    params.require(:comment).permit(:body)
+  end
+
+  def set_parent_resources
+    @comic = Comic.find(params[:comic_id])
+    @forum = Forum.find(params[:forum_id])
+    @thread = Group.find(params[:group_id])
+  end
 end

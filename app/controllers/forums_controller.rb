@@ -1,5 +1,7 @@
 class ForumsController < ApplicationController
   before_action :set_forum, only: [:show, :edit, :update, :destroy]
+  before_action :set_comic
+  before_action :set_threads, only: :show
 
   # GET /forums
   # GET /forums.json
@@ -62,13 +64,21 @@ class ForumsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_forum
-      @forum = Forum.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_forum
+    @forum = Forum.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def forum_params
-      params.require(:forum).permit(:comic_id, :topic)
-    end
+  def set_threads
+    @threads = Group.where(forum_id: @forum.id)
+  end
+
+  def set_comic
+    @comic = Comic.find(params[:comic_id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def forum_params
+    params.require(:forum).permit(:comic_id, :topic)
+  end
 end
