@@ -8,17 +8,22 @@
     %ul.navbar-nav.mr-auto
       %li.nav-item
         = link_to 'New Comic', new_comic_path, class: 'btn btn-secondary', type: 'button'
-      %li.nav-item.active
-        =link_to 'Comics', comics_path, class: 'nav-link'
-      %li.nav-item
+      %li.nav-item{class: ('active' if action_name == 'index')}
         = link_to 'Newest', comics_path, class: 'nav-link', type: 'button'
-      %li.nav-item
-        = link_to 'Top rated', comics_path, class: 'nav-link', type: 'button'
-      %li.nav-item
-        = link_to 'Free', comics_path, class: 'nav-link', type: 'button'
-      %li.nav-item
-        = link_to 'Favourites', comics_path, class: 'nav-link', type: 'button'
+      %li.nav-item{class: ('active' if action_name == 'top_rated')}
+        = link_to 'Top rated', top_rated_comics_path, class: 'nav-link', type: 'button'
+      %li.nav-item{class: ('active' if action_name == 'free')}
+        = link_to 'Free', free_comics_path, class: 'nav-link', type: 'button'
+      %li.nav-item{class: ('active' if action_name == 'favourites')}
+        = link_to 'Favourites', favourites_comics_path, class: 'nav-link', type: 'button'
     %form.form-inline.my-2.my-lg-0
-      %input.form-control.mr-sm-2{placeholder: 'Search', :type => 'search'}
-      %button.btn.btn-outline-success.my-2.my-sm-0{type: 'submit'}
-        = icon('search')
+      = search_form_for @q do |f|
+        %div.my-search-form
+          = f.search_field :title_cont, placeholder: 'Search title', class: 'form-control mr-sm-2'
+          = f.button type:'submit', class: 'btn btn-outline-success my-2 my-sm-0' do
+            = icon('search')
+
+    %div
+      = link_to(destroy_user_session_path, method: :delete, class: 'btn btn-secondary my-search-form') do
+        -#=icon('sign-out')
+        Log Out

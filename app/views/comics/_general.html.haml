@@ -1,0 +1,27 @@
+= render partial: 'layouts/navbar'
+
+.container-fluid
+  .row
+    .col-md-10
+      %div.container-fluid.comics-list
+        .row.justify-content-center
+          - @comics.each do |comic|
+            %div.col-sm-6.col-md-4.col-lg-3.col-xl-2.panel.center-block
+              %div.panel-heading
+                =link_to comic_path(comic) do
+                  - if comic.cover.present?
+                    = image_tag(image_path(comic.cover), class: 'comic-cover')
+                  -else
+                    %img.comic-cover{src:'https://tse4.mm.bing.net/th?id=OIP.v5Y2VrH2Bb8k0_vBWTj_DQDcEs&pid=15.1&P=0&w=300&h=300'}
+              %div.panel-body
+                = comic.title
+                %br
+                = comic.user.full_name
+        %br
+        %div.pagination-lg.justify-content-center
+          - if @comics.length > 1
+            .justify-content-center.badge.badge-light.page-link= will_paginate @comics
+
+    .col-md-2
+      .sidebar-nav-fixed.pull-right.affix
+        = image_tag(image_path('advertising.jpg'), class: 'd-inline-block advertising')
