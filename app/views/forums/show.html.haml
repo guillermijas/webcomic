@@ -9,8 +9,9 @@
       .center-content
         =link_to 'New thread', new_comic_forum_group_path(@comic, 1), class: 'btn btn-primary'
       %br
-  = @threads.each do |thread|
+  - @threads.each do |thread|
     .centered.top_div{style: 'background-color: #2e353d'}
-      .inner_div
-        %h3= thread.title
-        %p.text= thread.description
+      = link_to comic_forum_group_path(@comic, @forum, thread) do
+        .inner_div
+          %h3= thread.title
+          %p.text= thread.description
