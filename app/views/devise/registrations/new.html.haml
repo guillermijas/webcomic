@@ -20,8 +20,7 @@
             = f.input :birth_date, label: 'Birth Date (YYYY-MM-DD)', required: true, as: :date, placeholder: 'YYYY-MM-DD', html5: true
         %br
       .actions.text-center
-        .row
-          .col
-            = f.button :submit, 'Done!', class: 'btn btn-success'
-          .col
-            = link_to 'Back', new_user_session_path, class: 'btn btn-secondary'
+        = f.button :submit, 'Done!', class: 'btn btn-primary w-100'
+        %br
+        %br
+        = link_to 'Back', new_user_session_path, class: 'btn btn-secondary'
