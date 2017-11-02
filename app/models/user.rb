@@ -11,4 +11,5 @@ class User < ApplicationRecord
       'Anonymous'
     end
   end
+
 end

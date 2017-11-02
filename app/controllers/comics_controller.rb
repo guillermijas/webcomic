@@ -9,6 +9,7 @@ class ComicsController < ApplicationController
     @q = Comic.ransack(params[:q])
 
     if params[:title].nil?
+      @q.sorts = 'created_at desc' if @q.sorts.empty?
       @comics = @q.result.paginate(page: params[:page], per_page: @lmt)
     else
       @comics = @q.result.where('title LIKE ?', "%#{params[:title]}%").order(:title).paginate(page: params[:page], per_page: @lmt)
