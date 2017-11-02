@@ -1,18 +1,26 @@
-%p#notice= notice
+.outer_div
+  .centered.top_div
+    %br/
+    .inner_div
+      = link_to('Back to forum', comic_forum_path(@comic, @forum), class: 'btn btn-primary')
+      %h2= @thread.title
+      %p.text= @thread.description
+      %br/
+  .centered.top_div
+    .inner_div
+      %h4 Post your comment here:
+      = simple_form_for([@comic, @forum, @thread, @comment]) do |f|
+        = f.text_area :body
+        = f.submit 'Submit', class: 'btn btn-primary'
+      %br
+  #centered.top_div{:style => "background-color:#2e353d;"}
+    - @comments.each do |comment|
+      .inner_div
+        %p.text= comment.body
+        %p.info=comment.user.first_name
 
-%p
-  %b Forum:
-  = @group.forum
-%p
-  %b User:
-  = @group.user
-%p
-  %b Title:
-  = @group.title
-%p
-  %b Text:
-  = @group.text
-
-= link_to 'Edit', edit_group_path(@group)
-\|
-= link_to 'Back', groups_path
+:javascript
+  function clearText(elem1,elem2) {
+    elem1.value='';
+    elem2.value='';
+  }
