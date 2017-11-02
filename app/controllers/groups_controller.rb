@@ -12,19 +12,15 @@ class GroupsController < ApplicationController
     @group = Group.new
   end
 
-  def edit
-  end
-
   def create
     @group = Group.new(group_params)
-
+    @group.user = current_user
+    @group.forum = @forum
     respond_to do |format|
       if @group.save
-        format.html { redirect_to comic_forum_path(@comic, @forum), notice: 'Group was successfully created.' }
-        format.json { render :show, status: :created, location: @group }
+        format.html { redirect_to comic_forum_path(@comic, @forum) }
       else
         format.html { render :new }
-        format.json { render json: @group.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -32,12 +28,12 @@ class GroupsController < ApplicationController
   def destroy
     @group.destroy
     respond_to do |format|
-      format.html { redirect_to groups_url, notice: 'Group was successfully destroyed.' }
-      format.json { head :no_content }
+      format.html { redirect_to comic_forum_path(@comic, @forum) }
     end
   end
 
   private
+
   def set_group
     @thread = Group.find(params[:id])
   end
