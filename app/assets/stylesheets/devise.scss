@@ -12,14 +12,17 @@ $gray: #dddddd;
   display: flex;
   align-items: center;
   justify-content: center;
+
   .login-container {
     border-top: 14px solid #d19b3d;
     background-color: #2e353d;
     padding: 30px;
     width: 500px;
+
     p, label, a, span, h1, h2 {
       color: white;
     }
+
     .form-actions{
       display: flex;
       align-items: center;
@@ -28,9 +31,11 @@ $gray: #dddddd;
         margin-left: 10px;
       }
     }
+
     abbr{
       color: red;
     }
+
     .help-block{
       color: #996666;
     }

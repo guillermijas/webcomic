@@ -1,12 +1,16 @@
-%p#notice= notice
-
-%p
-  %b Comic:
-  = @forum.comic
-%p
-  %b Topic:
-  = @forum.topic
-
-= link_to 'Edit', edit_forum_path(@forum)
-\|
-= link_to 'Back', forums_path
+.outer_div
+  .centered.top_div
+    %br
+    .inner_div
+      =link_to 'Back to comic', comic_path(@comic), class: 'btn btn-primary', style: 'float: left'
+      %h1= "#{@comic.title} Forum"
+      %p.text
+        Nullam volutpat placerat felis sit amet tempor. In ultricies
+      .center-content
+        =link_to 'New thread', new_comic_forum_group_path(@comic, 1), class: 'btn btn-primary'
+      %br
+  = @threads.each do |thread|
+    .centered.top_div{style: 'background-color: #2e353d'}
+      .inner_div
+        %h3= thread.title
+        %p.text= thread.description
