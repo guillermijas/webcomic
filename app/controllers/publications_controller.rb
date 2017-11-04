@@ -1,5 +1,6 @@
 class PublicationsController < ApplicationController
   before_action :set_publication, only: [:show, :edit, :update, :destroy]
+  before_action :set_comic
 
   # GET /publications
   # GET /publications.json
@@ -28,7 +29,7 @@ class PublicationsController < ApplicationController
 
     respond_to do |format|
       if @publication.save
-        format.html { redirect_to @publication, notice: 'Publication was successfully created.' }
+        format.html { redirect_to comic_publications_path(@comic), notice: 'Publication was successfully created.' }
         format.json { render :show, status: :created, location: @publication }
       else
         format.html { render :new }
@@ -71,4 +72,8 @@ class PublicationsController < ApplicationController
     def publication_params
       params.require(:publication).permit(:comic_id, :free, :page, :text)
     end
+
+  def set_comic
+    @comic = Comic.find(params[:comic_id])
+  end
 end
