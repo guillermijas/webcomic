@@ -30,6 +30,7 @@ class ComicsController < ApplicationController
   def create
     @comic = Comic.new(comic_params)
     @comic.user = current_user
+    @comic.price = 0 if @comic.price.nil?
     respond_to do |format|
       if @comic.save
         format.html { redirect_to @comic }
@@ -83,6 +84,6 @@ class ComicsController < ApplicationController
   end
 
   def comic_params
-    params.require(:comic).permit(:user_id, :title, :price, :category, :average_rating, :cover)
+    params.require(:comic).permit(:title, :price, :category, :synopsis, :cover)
   end
 end

@@ -81,7 +81,7 @@
   margin-right: 7px;
 }
 
-.comic-wrapper, .outer-div{
+.comic-wrapper {
   display: flex;
   justify-content: center;
 
@@ -96,6 +96,9 @@
       img{
         width: 100%
       }
+    }
+    .form-group{
+      width:100%;
     }
   }
 }

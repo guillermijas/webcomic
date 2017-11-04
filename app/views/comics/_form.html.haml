@@ -1,48 +1,34 @@
 = render partial: 'layouts/navbar'
 
-.outer_div
-  .content_div
-    .centered.top_div
-      %br/
-      .inner_div
-        %h1 WebComic       
-        %h2 New comic
-        %p.text
-          At this page you can create a new comic. Please fill in all relevant fields.
-        %br/
-    .centered.top_div
-      .inner_div
-        = simple_form_for [@comic] do |f|
-          %h4 Select the user:
-          %div{:style => "width:100%; padding-left:16px; padding-right:16px;"}
-            .form-group
-              = f.association :user, label: false, readonly: true
-            -#%select#comic_user_id.inputtext{:name => "comic[user_id]"}
-            -#  %option{:value => "1"} prueba
-          %h4 Enter the comic title:
-          %div{:style => "width:100%; padding-left:16px; padding-right:16px;"}
-            .form-group
-              = f.input :title, label: false
-            -#%input#comic_title.inputtext{:name => "comic[title]", :type => "text"}/
-          %h4 Enter the comic price:
-          %div{:style => "width:100%; padding-left:16px; padding-right:16px;"}
-            -#%input#comic_price.inputtext{:name => "comic[price]", :step => "any", :type => "number"}/
-            .form-group
-              = f.input :price, as: :string, label: false
-          %h4 Enter the comic category:
-          %div{:style => "width:100%; padding-left:16px; padding-right:16px;"}
-            -#%input#comic_category.inputtext{:name => "comic[category]", :type => "text"}/
-            .form-group
-              = f.input :category, label: false
-          %h4 Select a comic cover (image):
-          %div{:style => "width:100%; padding-left:16px; padding-right:16px;"}
-            -#%input#comic_cover.btn.btn-default.btn.btn-primary{:name => "comic[cover]", :type => "file"}/
-            -#.form-group
-            = f.input :cover, as: :file, label: false
-          %center
-            %input.btn.btn-default.btn.btn-primary{"data-disable-with" => "Create Comic", :name => "commit", :title => "Create a new comic", :type => "submit", :value => "Create Comic"}/
-          %br/
-  .banner_div
-    %div{:style => "position:fixed"}
-      = image_tag(image_path("banner.gif"))
+.container-fluid
+  .row
+    .col-md-10
+      .comic-wrapper
+        .comic
+          .text-center
+            %h1 New comic
+          .inner_div
+            = simple_form_for [@comic] do |f|
+              %h4 Comic title:
+              .form-group
+                = f.input :title, label: false
+              %h4 Synopsis:
+              .form-group
+                = f.text_area :synopsis, label: false, class: 'form-control'
+              %h4 Price (leave blank if it's free):
+              .form-group
+                = f.input :price, as: :string, label: false
+              %h4 Category:
+              .form-group
+                = f.input :category, label: false
+              %h4 Upload cover (JPG/PNG/GIF):
+              .form-group
+                = f.input :cover, as: :file, label: false
+              %center
+                = f.submit 'Create Comic!', class: 'btn btn-primary'
+    .col-md-2
+      .sidebar-nav-fixed.pull-right.affix
+        = image_tag(image_path('banner.gif'), class: 'd-inline-block advertising')
+
+
 
