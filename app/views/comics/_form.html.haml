@@ -1,13 +1,34 @@
-= simple_form_for(@comic) do |f|
-  = f.error_notification
+= render partial: 'layouts/navbar'
 
-  .form-inputs
-    = f.association :user
-    = f.input :title
-    = f.input :price
-    = f.input :category
-    = f.input :average_rating
-    = f.input :cover, as: :file
+.container-fluid
+  .row
+    .col-md-10
+      .comic-wrapper
+        .comic
+          .text-center
+            %h1 New comic
+          .inner_div
+            = simple_form_for [@comic] do |f|
+              %h4 Comic title:
+              .form-group
+                = f.input :title, label: false
+              %h4 Synopsis:
+              .form-group
+                = f.text_area :synopsis, label: false, class: 'form-control'
+              %h4 Price (leave blank if it's free):
+              .form-group
+                = f.input :price, as: :string, label: false
+              %h4 Category:
+              .form-group
+                = f.input :category, label: false
+              %h4 Upload cover (JPG/PNG/GIF):
+              .form-group
+                = f.input :cover, as: :file, label: false
+              %center
+                = f.submit 'Create Comic!', class: 'btn btn-primary'
+    .col-md-2
+      .sidebar-nav-fixed.pull-right.affix
+        = image_tag(image_path('banner.gif'), class: 'd-inline-block advertising')
 
-  .form-actions
-    = f.button :submit
+
+

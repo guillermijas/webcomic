@@ -1,21 +1,50 @@
-%p#notice= notice
+= render partial: 'layouts/navbar'
 
-%p
-  %b User:
-  = @comic.user
-%p
-  %b Title:
-  = @comic.title
-%p
-  %b Price:
-  = @comic.price
-%p
-  %b Category:
-  = @comic.category
-%p
-  %b Average rating:
-  = @comic.average_rating
+.container-fluid
+  .row
+    .col-md-10
+      .comic-wrapper
+        .comic
+          .row
+            .cover.col-md-4
+              = link_to(comic_publications_path(@comic)) do
+                -if @comic.cover.present?
+                  =image_tag(image_path(@comic.cover))
+                -else
+                  =image_tag(image_path('default-cover.jpg'), width: 90)
+              = link_to 'Read It!', comic_publications_path(@comic), class: 'btn btn-primary w-100'
+            .details.col-md-8
+              %h3.product-title.text-center
+                %strong= @comic.title
+              %p.product-description
+                = @comic.synopsis
+              %h4.price
+                %b
+                  Price:
+                - if @comic.price > 0
+                  = @comic.price
+                  €
+                - else
+                  Free!
+              %p
+                %b
+                  Category:
+                = @comic.category
+              %p
+                %b
+                  Autor:
+                = @comic.user.email
 
-= link_to 'Edit', edit_comic_path(@comic)
-\|
-= link_to 'Back', comics_path
+              .action
+                - if @comic.price > 0
+                  %button.add-to-cart.btn.btn-primary
+                    = icon('shopping-cart')
+                    Add to cart
+                =link_to save_favourite_comic_path(@comic), type: 'button', class: 'btn btn-success' do
+                  %span.fa.fa-heart
+                  Mark as favourite
+    .col-md-2
+      .sidebar-nav-fixed.pull-right.affix
+        = image_tag(image_path('banner.gif'), class: 'd-inline-block advertising')
+
+

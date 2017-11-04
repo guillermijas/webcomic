@@ -12,6 +12,9 @@ Rails.application.routes.draw do
       end
     end
   end
+
+  get 'comics/:id/save_favourite', to: 'comics#save_favourite', as: 'save_favourite_comic'
+
   devise_for :users
 
   root 'comics#index'

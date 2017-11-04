@@ -1,13 +1,10 @@
-body{
-  //margin: 70px !important;
-  background-size: cover;
-  background: image_url('comic-bg.jpg') no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  color: white;
+
+.banner_div {
+  width:15%;
+  float:right;
+  padding-top:25px;
 }
+
 
 .comics-nav {
   background-color: #2e353d;
@@ -82,4 +79,26 @@ body{
   margin-bottom: 10px !important;
   margin-left: 7px;
   margin-right: 7px;
+}
+
+.comic-wrapper {
+  display: flex;
+  justify-content: center;
+
+  .comic{
+    margin-top: 50px;
+    border-top: 14px solid #d19b3d;
+    background-color: #2e353d;
+    padding: 30px;
+    width: 75%;
+
+    .cover{
+      img{
+        width: 100%
+      }
+    }
+    .form-group{
+      width:100%;
+    }
+  }
 }
