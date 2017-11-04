@@ -1,29 +1,16 @@
--#= simple_form_for(@comic) do |f|
--#  = f.error_notification
--#
--#  .form-inputs
--#    = f.association :user
--#    = f.input :title
--#    = f.input :price
--#    = f.input :category
--#    = f.input :average_rating
--#    = f.input :cover, as: :file
--#
--#  .form-actions
--#    = f.button :submit
+= render partial: 'layouts/navbar'
+
 .outer_div
   .content_div
-    #centered.top_div
+    .centered.top_div
       %br/
       .inner_div
-        :javascript
-          document.write('<a class="btn btn-default btn btn-primary" style="float:left; margin:8px; margin-left:12px;" href="' + document.referrer + '">Back</a>');
         %h1 WebComic       
         %h2 New comic
         %p.text
           At this page you can create a new comic. Please fill in all relevant fields.
         %br/
-    #centered.top_div
+    .centered.top_div
       .inner_div
         = simple_form_for [@comic] do |f|
           %h4 Select the user:
@@ -41,7 +28,7 @@
           %div{:style => "width:100%; padding-left:16px; padding-right:16px;"}
             -#%input#comic_price.inputtext{:name => "comic[price]", :step => "any", :type => "number"}/
             .form-group
-              = f.input :price, label: false
+              = f.input :price, as: :string, label: false
           %h4 Enter the comic category:
           %div{:style => "width:100%; padding-left:16px; padding-right:16px;"}
             -#%input#comic_category.inputtext{:name => "comic[category]", :type => "text"}/
@@ -49,9 +36,9 @@
               = f.input :category, label: false
           %h4 Select a comic cover (image):
           %div{:style => "width:100%; padding-left:16px; padding-right:16px;"}
-            %input#comic_cover.btn.btn-default.btn.btn-primary{:name => "comic[cover]", :type => "file"}/
+            -#%input#comic_cover.btn.btn-default.btn.btn-primary{:name => "comic[cover]", :type => "file"}/
             -#.form-group
-            -#  = f.input :attachment, as: :file, label: false
+            = f.input :cover, as: :file, label: false
           %center
             %input.btn.btn-default.btn.btn-primary{"data-disable-with" => "Create Comic", :name => "commit", :title => "Create a new comic", :type => "submit", :value => "Create Comic"}/
           %br/

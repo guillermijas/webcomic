@@ -1,5 +1,5 @@
 class ComicsController < ApplicationController
-  before_action :set_comic, only: [:show, :edit, :update, :destroy]
+  before_action :set_comic, only: [:show, :edit, :update, :destroy, :save_favourite]
   before_action :authenticate_user!
   before_action :set_limit, only: [:index, :free, :top_rated, :favourites]
 
@@ -15,9 +15,11 @@ class ComicsController < ApplicationController
   end
 
   def show
+    @q = Comic.ransack(params[:q])
   end
 
   def new
+    @q = Comic.ransack(params[:q])
     @comic = Comic.new
   end
 
@@ -66,6 +68,9 @@ class ComicsController < ApplicationController
     @comics = Comic.all.order(:title).paginate(page: params[:page], per_page: @lmt)
   end
 
+  def save_favourite
+    redirect_to @comic
+  end
   private
 
   def set_limit
