@@ -1,11 +1,30 @@
-= simple_form_for(@publication) do |f|
-  = f.error_notification
+-#= simple_form_for([@comic, @publication]) do |f|
+-#  = f.error_notification
+-#
+-#  .form-inputs
+-#    = f.association :comic
+-#    = f.input :free
+-#    = f.input :page
+-#    = f.input :comment
+-#    = f.input :attachment, as: :file
+-#
+-#  .form-actions
+-#    = f.button :submit
 
-  .form-inputs
-    = f.association :comic
-    = f.input :free
-    = f.input :page
-    = f.input :text
-
-  .form-actions
-    = f.button :submit
+.publication-body
+  .publication-container
+    = simple_form_for [@comic, @publication] do |f|
+      .form-group
+        = f.association :comic, label: 'Comic', readonly: true
+      .form-group
+        = f.input :comment, label: 'Comment'
+      .form-group
+        %label Publication
+        = f.input :attachment, as: :file
+      %br
+      .actions.text-center
+        .row
+          .col
+            = f.button :submit, 'Done!', class: 'btn btn-primary'
+          .col
+            = link_to 'Back', comic_publications_path, class: 'btn btn-secondary'

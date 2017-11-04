@@ -1,21 +1,62 @@
-%p#notice= notice
+%meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+%link{:href => "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css", :rel => "stylesheet"}/
+%link{:href => "https://fonts.googleapis.com/css?family=Open+Sans:400,700", :rel => "stylesheet"}/
+%link{:href => "http://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css", :rel => "stylesheet"}/
+%script{:src => "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"}
+%link{:href => "https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.2/css/star-rating.min.css", :rel => "stylesheet"}/
+%script{:src => "https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.2/js/star-rating.min.js"}
+/ Bootstrap
+%link{:href => "http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css", :rel => "stylesheet"}/
+/ Latest stable release of jQuery Core Library
+%script{:crossorigin => "anonymous", :integrity => "sha256-lZFHibXzMHo3GGeehn1hudTAP3Sc0uKXBXAzHX1sjtk=", :src => "https://code.jquery.com/jquery-1.12.2.min.js"}
+/ Bootstrap JS
+%script{:src => "http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"}
+%script{:src => "https://cdnjs.cloudflare.com/ajax/libs/jssor-slider/26.3.0/jssor.slider.min.js"}
+%script{:src => "js/jssor.slider-26.3.0.min.js", :type => "text/javascript"}
 
-%p
-  %b User:
-  = @comic.user
-%p
-  %b Title:
-  = @comic.title
-%p
-  %b Price:
-  = @comic.price
-%p
-  %b Category:
-  = @comic.category
-%p
-  %b Average rating:
-  = @comic.average_rating
+.container-comic
+  .card
+    .container-fliud
+    .wrapper.row
+      .preview.col-md-6
+        .preview-pic.tab-content
+          #pic-1.tab-pane.active
+            = link_to(comic_publications_path(@comic)) do
+              %img{:alt => "Comic", :src => "https://files.genial.guru/files/news/part_30/303060/15598260-35670855-15751410-0-1477849147-1477849151-0-1478150569-0-1478261816-1478261822-650-7-1488295420-650-042f6972aa-1492087942.jpg", :style => "width:100%"}/
+      .details.col-md-6
+        %h3.product-title
+          %b
+            = @comic.title
+        .rating
+          .stars
+            %span.fa.fa-star.checked
+            %span.fa.fa-star.checked
+            %span.fa.fa-star.checked
+            %span.fa.fa-star
+            %span.fa.fa-star
+        %p.product-description Suspendisse quos? Tempus cras iure temporibus? Eu laudantium cubilia sem sem! Repudiandae et! Massa senectus enim minim sociosqu delectus posuere.
+        %h4.price
+          %b price:
+          = @comic.price
+          €
+        %p
+          %b Category:
+          = @comic.category
+        %p
+          %b Autor:
+          = @comic.user.email
 
-= link_to 'Edit', edit_comic_path(@comic)
-\|
-= link_to 'Back', comics_path
+        .container
+          %input#input-1.rating.rating-loading{"data-max" => "5", "data-min" => "0", "data-step" => "0.5", :name => "rating", :value => "0"}/
+
+        .action
+          %button.add-to-cart.btn.btn-primary{:type => "button"} add to cart
+          %button.like.btn.btn-success{:type => "button"}
+            %span.fa.fa-heart
+
+  = link_to 'Edit', edit_comic_path(@comic)
+  \|
+  = link_to 'Back', comics_path
+
+
+
