@@ -69,8 +69,8 @@
           %polyline.a{:points => "8069.6,5495.7 10573.9,8000 8069.6,10504.3 "}
           %line.a{:x1 => "5426.1", :x2 => "10573.9", :y1 => "8000", :y2 => "8000"}
 
-
-  = link_to 'New Publication', new_comic_publication_path(@comic)
+  -if @comic.user == current_user
+    = link_to 'New Publication', new_comic_publication_path(@comic)
 
   :javascript
     jssor_1_slider_init = function() {

@@ -1,5 +1,8 @@
 = render partial: 'layouts/navbar'
 
+%p
+  = @publications.ids
+
 .container-fluid
   .row
     .col-md-10
@@ -7,12 +10,18 @@
         .comic
           .row
             .cover.col-md-4
-              = link_to(comic_publications_path(@comic)) do
+              -if (can? :read, @comic) || (@publications.count > 0) #|| (can? :read, @publications)
+                = link_to(comic_publications_path(@comic)) do
+                  -if @comic.cover.present?
+                    =image_tag(image_path(@comic.cover))
+                  -else
+                    =image_tag(image_path('default-cover.jpg'), width: 90)
+                = link_to 'Read It!', comic_publications_path(@comic), class: 'btn btn-primary w-100'
+              -else
                 -if @comic.cover.present?
                   =image_tag(image_path(@comic.cover))
                 -else
                   =image_tag(image_path('default-cover.jpg'), width: 90)
-              = link_to 'Read It!', comic_publications_path(@comic), class: 'btn btn-primary w-100'
             .details.col-md-8
               %h3.product-title.text-center
                 %strong= @comic.title

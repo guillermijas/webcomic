@@ -16,6 +16,12 @@ class ComicsController < ApplicationController
 
   def show
     @q = Comic.ransack(params[:q])
+
+    if Payment.where(comic_id: @comic).where(user_id: current_user).count > 0
+      @publications = @comic.publications
+    else
+      @publications = @comic.publications.where(free: true)
+    end
   end
 
   def new
