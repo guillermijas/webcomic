@@ -7,12 +7,18 @@
         .comic
           .row
             .cover.col-md-4
-              = link_to(comic_publications_path(@comic)) do
+              -if (can? :read, @comic) || (@publications.count > 0) #|| (can? :read, @publications)
+                = link_to(comic_publications_path(@comic)) do
+                  -if @comic.cover.present?
+                    =image_tag(image_path(@comic.cover))
+                  -else
+                    =image_tag(image_path('default-cover.jpg'), width: 90)
+                = link_to 'Read It!', comic_publications_path(@comic), class: 'btn btn-primary w-100'
+              -else
                 -if @comic.cover.present?
                   =image_tag(image_path(@comic.cover))
                 -else
                   =image_tag(image_path('default-cover.jpg'), width: 90)
-              = link_to 'Read It!', comic_publications_path(@comic), class: 'btn btn-primary w-100'
               .forum
                 =link_to 'General Forum', comic_forum_path(@comic, @forums.find_by(topic: 'General')), type: 'button', class: 'btn btn-default-forum'
                 =link_to 'Speculate Forum', comic_forum_path(@comic, @forums.find_by(topic: 'Speculate')), type: 'button', class: 'btn btn-default-forum'
