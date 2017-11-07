@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   end
 
   get 'comics/:id/save_favourite', to: 'comics#save_favourite', as: 'save_favourite_comic'
+  get 'comics/:id/delete_favourite', to: 'comics#delete_favourite', as: 'delete_favourite_comic'
   get 'comics/:id/pay_comic', to: 'comics#pay_comic', as: 'pay_comic'
 
   devise_for :users

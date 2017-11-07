@@ -49,9 +49,14 @@
                   = link_to(pay_comic_path(@comic), class: 'btn btn-primary') do
                     = icon('shopping-cart')
                     Buy now!
-                =link_to save_favourite_comic_path(@comic), type: 'button', class: 'btn btn-success' do
-                  %span.fa.fa-heart
-                  Mark as favourite
+                - if @is_fav
+                  =link_to delete_favourite_comic_path(@comic), type: 'button', class: 'btn btn-danger' do
+                    %span.fa.fa-times
+                    Remove from favourites
+                - else
+                  =link_to save_favourite_comic_path(@comic), type: 'button', class: 'btn btn-success' do
+                    %span.fa.fa-heart
+                    Mark as favourite
     .col-md-2
       .sidebar-nav-fixed.pull-right.affix
         = image_tag(image_path('banner.gif'), class: 'd-inline-block advertising')
