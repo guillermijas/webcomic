@@ -19,6 +19,9 @@
                   =image_tag(image_path(@comic.cover))
                 -else
                   =image_tag(image_path('default-cover.jpg'), width: 90)
+              .forum
+                =link_to 'General Forum', comic_forum_path(@comic, @forums.find_by(topic: 'General')), type: 'button', class: 'btn btn-default-forum'
+                =link_to 'Speculate Forum', comic_forum_path(@comic, @forums.find_by(topic: 'Speculate')), type: 'button', class: 'btn btn-default-forum'
             .details.col-md-8
               %h3.product-title.text-center
                 %strong= @comic.title
@@ -43,9 +46,9 @@
 
               .action
                 - if @comic.price > 0
-                  %button.add-to-cart.btn.btn-primary
+                  = link_to(pay_comic_path(@comic), class: 'btn btn-primary') do
                     = icon('shopping-cart')
-                    Add to cart
+                    Buy now!
                 =link_to save_favourite_comic_path(@comic), type: 'button', class: 'btn btn-success' do
                   %span.fa.fa-heart
                   Mark as favourite

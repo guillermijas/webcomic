@@ -66,12 +66,6 @@ ActiveRecord::Schema.define(version: 20171104192000) do
     t.index ["user_id"], name: "index_payments_on_user_id"
   end
 
-  create_table "projects", force: :cascade do |t|
-    t.string "title"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "publications", force: :cascade do |t|
     t.integer "comic_id"
     t.boolean "free"

@@ -1,5 +1,5 @@
 class ComicsController < ApplicationController
-  before_action :set_comic, only: [:show, :edit, :update, :destroy, :save_favourite]
+  before_action :set_comic, only: [:show, :edit, :update, :destroy, :save_favourite, :pay_comic]
   before_action :authenticate_user!
   before_action :set_limit, only: [:index, :free, :top_rated, :favourites]
 
@@ -16,6 +16,7 @@ class ComicsController < ApplicationController
 
   def show
     @q = Comic.ransack(params[:q])
+    @forums = Forum.where(comic_id: @comic.id)
 
     if Payment.where(comic_id: @comic).where(user_id: current_user).count > 0
       @publications = @comic.publications
@@ -34,11 +35,14 @@ class ComicsController < ApplicationController
 
 
   def create
+    @q = Comic.ransack(params[:q])
     @comic = Comic.new(comic_params)
     @comic.user = current_user
     @comic.price = 0 if @comic.price.nil?
     respond_to do |format|
       if @comic.save
+        Forum.create(comic_id: @comic.id, topic: 'General')
+        Forum.create(comic_id: @comic.id, topic: 'Speculate')
         format.html { redirect_to @comic }
       else
         format.html { render :new }
@@ -78,6 +82,17 @@ class ComicsController < ApplicationController
   def save_favourite
     redirect_to @comic
   end
+
+  def pay_premium
+    User.find(current_user.id).update(premium_until: 1.month.from_now)
+    redirect_to 'https://www.paypal.com/es/signin'
+  end
+
+  def pay_comic
+    Payment.create(user_id: current_user.id, comic_id: @comic.id)
+    redirect_to 'https://www.paypal.com/es/signin'
+  end
+
   private
 
   def set_limit
