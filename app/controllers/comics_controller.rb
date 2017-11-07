@@ -79,7 +79,17 @@ class ComicsController < ApplicationController
     @comics = Comic.all.order(:title).paginate(page: params[:page], per_page: @lmt)
   end
 
+  def set_favorite
+    @comic = Comic.find(params[:id])
+    Favourite.create(comic_id: @comic.id, user_id: current_user.id)
+
+    redirect_to :back
+  end
+
   def save_favourite
+    @comic = Comic.find(params[:id])
+    Favourite.create(comic_id: @comic.id, user_id: current_user.id)
+
     redirect_to @comic
   end
 

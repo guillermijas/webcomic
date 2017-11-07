@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171104192000) do
+ActiveRecord::Schema.define(version: 20171107152044) do
 
   create_table "comics", force: :cascade do |t|
     t.integer "user_id"
@@ -36,6 +36,15 @@ ActiveRecord::Schema.define(version: 20171104192000) do
     t.datetime "updated_at", null: false
     t.index ["group_id"], name: "index_comments_on_group_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "favourites", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "comic_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["comic_id"], name: "index_favourites_on_comic_id"
+    t.index ["user_id"], name: "index_favourites_on_user_id"
   end
 
   create_table "forums", force: :cascade do |t|
