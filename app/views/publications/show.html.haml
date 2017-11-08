@@ -1,16 +1,16 @@
-%p#notice= notice
+= render partial: 'layouts/navbar'
 
-%p
-  %b Comic:
-  = @publication.comic
-%p
-  %b Free:
-  = @publication.free
-%p
-  %b Page:
-  = @publication.page
-
-
-= link_to 'Edit', edit_publication_path(@publication)
-\|
-= link_to 'Back', publications_path
+%br
+- unless @prev.nil?
+  = link_to comic_publication_path(@comic, @prev) do
+    .prev-publication
+      =icon('angle-left')
+.publication.center-content
+  = image_tag( image_url(@publication.attachment))
+.publication.center-content
+  %br
+    %p= @publication.comment
+- unless @next.nil?
+  = link_to comic_publication_path(@comic, @next) do
+    .next-publication
+      =icon('angle-right')

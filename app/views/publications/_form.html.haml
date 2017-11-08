@@ -1,30 +1,22 @@
--#= simple_form_for([@comic, @publication]) do |f|
--#  = f.error_notification
--#
--#  .form-inputs
--#    = f.association :comic
--#    = f.input :free
--#    = f.input :page
--#    = f.input :comment
--#    = f.input :attachment, as: :file
--#
--#  .form-actions
--#    = f.button :submit
+= render partial: 'layouts/navbar'
 
-.publication-body
-  .publication-container
-    = simple_form_for [@comic, @publication] do |f|
-      .form-group
-        = f.association :comic, label: 'Comic', readonly: true
-      .form-group
-        = f.input :comment, label: 'Comment'
-      .form-group
-        %label Publication
-        = f.input :attachment, as: :file
-      %br
-      .actions.text-center
-        .row
-          .col
-            = f.button :submit, 'Done!', class: 'btn btn-primary'
-          .col
-            = link_to 'Back', comic_publications_path, class: 'btn btn-secondary'
+.container-fluid
+  .row
+    .col-md-10
+      .comic-wrapper
+        .comic
+          .text-center
+            %h1 New Publication
+          .inner_div
+            = simple_form_for [@comic, @publication] do |f|
+              %h4 Publication:
+              .form-group
+                = f.input :attachment, as: :file, label: false
+              %h4 Comment:
+              .form-group
+                = f.input :comment, label: false, class: 'form-control'
+              %center
+                = f.submit 'Upload!', class: 'btn btn-primary'
+    .col-md-2
+      .sidebar-nav-fixed.pull-right.affix
+        = image_tag(image_path('banner.gif'), class: 'd-inline-block advertising')

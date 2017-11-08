@@ -17,6 +17,7 @@ class ComicsController < ApplicationController
   def show
     @q = Comic.ransack(params[:q])
     @forums = Forum.where(comic_id: @comic.id)
+    @is_fav = Favourite.where(user_id: current_user.id, comic_id: @comic.id).first.present?
 
     if Payment.where(comic_id: @comic).where(user_id: current_user).count > 0
       @publications = @comic.publications
@@ -76,10 +77,21 @@ class ComicsController < ApplicationController
   end
 
   def favourites
-    @comics = Comic.all.order(:title).paginate(page: params[:page], per_page: @lmt)
+    favs = Favourite.where(user_id: current_user.id).pluck(:comic_id)
+    @comics = Comic.where(id: favs)
   end
 
   def save_favourite
+    @comic = Comic.find(params[:id])
+    Favourite.create(comic_id: @comic.id, user_id: current_user.id)
+
+    redirect_to @comic
+  end
+
+  def delete_favourite
+    @comic = Comic.find(params[:id])
+    Favourite.where(user_id: current_user.id, comic_id: @comic.id).first.destroy
+
     redirect_to @comic
   end
 
