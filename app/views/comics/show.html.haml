@@ -23,6 +23,9 @@
                 =link_to 'General Forum', comic_forum_path(@comic, @forums.find_by(topic: 'General')), type: 'button', class: 'btn btn-default-forum'
                 =link_to 'Speculate Forum', comic_forum_path(@comic, @forums.find_by(topic: 'Speculate')), type: 'button', class: 'btn btn-default-forum'
             .details.col-md-8
+              - if @comic.user_id == current_user.id
+                .center-content
+                  = link_to 'New publication', new_comic_publication_path(@comic), class: 'btn btn-secondary', type: 'button'
               %h3.product-title.text-center
                 %strong= @comic.title
               %p.product-description
@@ -42,7 +45,7 @@
               %p
                 %b
                   Autor:
-                = @comic.user.email
+                = @comic.user.full_name
 
               .action
                 - if @comic.price > 0

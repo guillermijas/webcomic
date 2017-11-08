@@ -1,9 +1,32 @@
-= simple_form_for([@comic, @forum, @group]) do |f|
-  = f.error_notification
+-#= simple_form_for([@comic, @forum, @group]) do |f|
+-#  = f.error_notification
+-#
+-#  .form-inputs
+-#    = f.input :title
+-#    = f.input :description
+-#
+-#  .form-actions
+-#    = f.button :submit
 
-  .form-inputs
-    = f.input :title
-    = f.input :description
+//= render partial: 'layouts/navbar'
 
-  .form-actions
-    = f.button :submit
+.container-fluid
+  .row
+    .col-md-10
+      .comic-wrapper
+        .comic
+          .text-center
+            %h1 New forum
+          .inner_div
+            = simple_form_for [@comic, @forum, @group] do |f|
+              %h4 Forum title:
+              .form-group
+                = f.input :title, label: false
+              %h4 Description:
+              .form-group
+                = f.text_area :description, label: false, class: 'form-control'
+              %center
+                = f.submit 'Create Forum!', class: 'btn btn-primary'
+    .col-md-2
+      .sidebar-nav-fixed.pull-right.affix
+        = image_tag(image_path('banner.gif'), class: 'd-inline-block advertising')

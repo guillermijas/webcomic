@@ -1,7 +1,7 @@
 class ComicsController < ApplicationController
   before_action :set_comic, only: [:show, :edit, :update, :destroy, :save_favourite, :pay_comic]
   before_action :authenticate_user!
-  before_action :set_limit, only: [:index, :free, :top_rated, :favourites]
+  before_action :set_limit, only: [:index, :free, :my_comics, :favourites]
 
   def index
     @q = Comic.ransack(params[:q])
@@ -68,8 +68,8 @@ class ComicsController < ApplicationController
     end
   end
 
-  def top_rated
-    @comics = @q.result.order(:average_rating).paginate(page: params[:page], per_page: @lmt)
+  def my_comics
+    @comics = @q.result.where(user_id: current_user).paginate(page: params[:page], per_page: @lmt)
   end
 
   def free
