@@ -11,14 +11,14 @@
       %li.nav-item{class: ('active' if action_name == 'index')}
         = link_to 'Newest', comics_path, class: 'nav-link', type: 'button'
       %li.nav-item{class: ('active' if action_name == 'top_rated')}
-        = link_to 'Top rated', top_rated_comics_path, class: 'nav-link', type: 'button'
+        = link_to 'My comics', my_comics_comics_path, class: 'nav-link', type: 'button'
       %li.nav-item{class: ('active' if action_name == 'free')}
         = link_to 'Free', free_comics_path, class: 'nav-link', type: 'button'
       %li.nav-item{class: ('active' if action_name == 'favourites')}
         = link_to 'Favourites', favourites_comics_path, class: 'nav-link', type: 'button'
-      %li.nav-item{class: ('active' if action_name == 'premium')}
-        -#= link_to 'Premium', favourites_comics_path, class: 'nav-link', type: 'button'
-        %button.btn.btn-success{"data-target" => "#myModal", "data-toggle" => "modal", :type => "button"} Premium
+      - unless current_user.premium_until.present? && current_user.premium_until > Time.zone.now
+        %li.nav-item{class: ('active' if action_name == 'premium')}
+          %button.btn.btn-success{'data-target': '#myModal', 'data-toggle': 'modal', type: 'button'} Premium
 
     %form.form-inline.my-2.my-lg-0
       = search_form_for @q do |f|
