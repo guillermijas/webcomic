@@ -6,12 +6,8 @@
     %span.navbar-toggler-icon
   #navbarSupportedContent.collapse.navbar-collapse
     %ul.navbar-nav.mr-auto
-      -if controller_name == 'publications'
-        %li.nav-item
-          = link_to 'New publication', new_comic_publication_path(@comic), class: 'btn btn-secondary', type: 'button'
-      -else
-        %li.nav-item
-          = link_to 'New Comic', new_comic_path, class: 'btn btn-secondary', type: 'button'
+      %li.nav-item
+        = link_to 'New Comic', new_comic_path, class: 'btn btn-secondary', type: 'button'
       %li.nav-item{class: ('active' if action_name == 'index')}
         = link_to 'Newest', comics_path, class: 'nav-link', type: 'button'
       %li.nav-item{class: ('active' if action_name == 'top_rated')}

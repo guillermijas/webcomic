@@ -30,3 +30,7 @@ body{
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   overflow-x: hidden;
 }
+
+button, html [type="button"],[type="reset"],[type="submit"] {
+  -webkit-appearance: inherit;
+}
