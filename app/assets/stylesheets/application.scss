@@ -9,7 +9,10 @@
 @import "publications.scss";
 
 html{
-  font-size: 14px;
+
+  body{
+    font-size: 14px!important;
+  }
 }
 
 .center-content{

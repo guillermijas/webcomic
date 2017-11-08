@@ -32,6 +32,7 @@ class ComicsController < ApplicationController
   end
 
   def edit
+    @q = Comic.ransack(params[:q])
   end
 
 
