@@ -25,7 +25,11 @@
               .form-group
                 = f.input :cover, as: :file, label: false
               %center
-                = f.submit 'Create Comic!', class: 'btn btn-primary'
+                - if action_name == 'edit'
+                  = f.submit 'Update Comic!', class: 'btn btn-primary'
+                - else
+                  = f.submit 'Create Comic!', class: 'btn btn-primary'
+
     .col-md-2
       .sidebar-nav-fixed.pull-right.affix
         = image_tag(image_path('banner.gif'), class: 'd-inline-block advertising')

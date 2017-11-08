@@ -1,7 +1,7 @@
 %nav.navbar.navbar-expand-lg.comics-nav
   =link_to(comics_path, class: 'navbar-brand') do
     = image_tag(image_path('logo-green-lantern.png'), height: 30, width: 30)
-    WebComic
+    MasterComic
   %button.navbar-dark.navbar-toggler{'data-target': '#navbarSupportedContent', 'data-toggle': 'collapse', type: 'button'}
     %span.navbar-toggler-icon
   #navbarSupportedContent.collapse.navbar-collapse
@@ -29,7 +29,6 @@
 
     %div
       = link_to(destroy_user_session_path, method: :delete, class: 'btn btn-secondary my-search-form') do
-        -#=icon('sign-out')
         Log Out
 
 #myModal.modal.fade
@@ -40,7 +39,7 @@
         %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
           %span{"aria-hidden" => "true"} ×
       .modal-body
-        %p For only 20$ you can read all the comics
+        %p For only 20€ you can read all the comics and keep ads away!
       .modal-footer
         = link_to 'Proceed', pay_premium_comics_path, class: 'btn btn-primary'
         %button.btn.btn-secondary{"data-dismiss" => "modal", :type => "button"} Close
