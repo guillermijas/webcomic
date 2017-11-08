@@ -1,9 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  comic: one
-  topic: MyString
+#one:
+#  comic: one
+#  topic: General
+#
+#two:
+#comic: one
+#topic: Speculate
 
-two:
-  comic: two
-  topic: MyString
+

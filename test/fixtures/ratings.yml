@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  user: one
-  comic: one
-  rating: 1
-  description: MyString
-
-two:
-  user: two
-  comic: two
-  rating: 1
-  description: MyString
+#one:
+#  user: one
+#  comic: one
+#  rating: 1
+#  description: MyString
+#
+#two:
+#  user: two
+#  comic: two
+#  rating: 1
+#  description: MyString
