@@ -7,7 +7,7 @@
         .comic
           .row
             .cover.col-md-4
-              -if (can? :read, @comic) || (@comic.price.zero?)
+              -if (can? :read, @comic) || (@comic.price.zero? || @comic.paid_by?(current_user))
                 = link_to(comic_publications_path(@comic)) do
                   -if @comic.cover.present?
                     =image_tag(image_path(@comic.cover))
@@ -58,7 +58,7 @@
                   This comic does not have any publication yet
 
               .action
-                - if @comic.price > 0
+                - if @comic.price > 0 && !@comic.paid_by?(current_user)
                   = link_to(pay_comic_path(@comic), class: 'btn btn-primary') do
                     = icon('shopping-cart')
                     Buy now!
