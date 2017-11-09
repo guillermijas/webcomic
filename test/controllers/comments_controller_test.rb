@@ -1,27 +1,32 @@
-# require 'test_helper'
-#
-# class CommentsControllerTest < ActionDispatch::IntegrationTest
-#   setup do
-#     @comment = comments(:one)
-#   end
-#
-#   test "should get index" do
-#     get comments_url
-#     assert_response :success
-#   end
-#
-#   test "should get new" do
-#     get new_comment_url
-#     assert_response :success
-#   end
-#
-#   test "should create comment" do
-#     assert_difference('Comment.count') do
-#       post comments_url, params: { comment: { body: @comment.body, group_id: @comment.group_id, user_id: @comment.user_id } }
-#     end
-#
-#     assert_redirected_to comment_url(Comment.last)
-#   end
+require 'test_helper'
+
+class CommentsControllerTest < ActionDispatch::IntegrationTest
+  setup do
+    @comic = comics(:one)
+    @user = users(:ivan)
+    @forum = forums(:one)
+    @group = groups(:one)
+    @comments = comments(:one)
+    sign_in(@user)
+  end
+
+
+  # test "should get new" do
+  #   get new_comic_forum_group_comment_url(@comic.id, @forum.id, @group.id)
+  #   assert_response :success
+  # end
+
+  # test "should create comment" do
+  #   assert_difference('Comment.count') do
+  #     post comic_forum_group_comments_url(@comic,@forum,@group), params: {
+  #         comment: {
+  #             body: @comment.body
+  #         }
+  #     }
+  #   end
+
+    # assert_redirected_to comic_forum_group_comment_url(Comment.last)
+  # end
 #
 #   test "should show comment" do
 #     get comment_url(@comment)
@@ -45,4 +50,4 @@
 #
 #     assert_redirected_to comments_url
 #   end
-# end
+end

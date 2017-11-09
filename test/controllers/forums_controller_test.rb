@@ -1,8 +1,12 @@
 # require 'test_helper'
 #
 # class ForumsControllerTest < ActionDispatch::IntegrationTest
+
 #   setup do
+#     @comic = comics(:one)
+#     @user = users(:ivan)
 #     @forum = forums(:one)
+#     sign_in(@user)
 #   end
 #
 #   test "should get index" do
