@@ -6,10 +6,10 @@
       .comic-wrapper
         .comic
           .text-center
-            %h1 New forum
+            %h1 New thread
           .inner_div
             = simple_form_for [@comic, @forum, @group] do |f|
-              %h4 Forum title:
+              %h4 Thread title:
               .form-group
                 = f.input :title, label: false
               %h4 Description:
