@@ -9,7 +9,7 @@
           %h1.text-center= "#{@comic.title} forum"
           %br
           .center-content
-            =link_to 'New thread', new_comic_forum_group_path(@comic, 1), class: 'btn btn-primary'
+            =link_to 'New thread', new_comic_forum_group_path(@comic, @forum), class: 'btn btn-primary'
           %br
       - if @threads.empty?
         .inner_div
