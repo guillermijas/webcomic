@@ -53,7 +53,7 @@
                 %b
                   Last publication:
                 - if @comic.publications.last.present?
-                  = @comic.publications.last.created_at.strftime('dd-mm-yyyy')
+                  = @comic.publications.last.created_at.strftime('%d-%m-%Y')
                 - else
                   This comic does not have any publication yet
 
