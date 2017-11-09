@@ -1,5 +1,12 @@
 = render partial: 'layouts/navbar'
 
+= link_to comic_path(@comic) do
+  .top-back
+    Back to comic
+%br
+%br
+%br
+%br
 %br
 - unless @prev.nil?
   = link_to comic_publication_path(@comic, @prev) do
@@ -14,3 +21,6 @@
   = link_to comic_publication_path(@comic, @next) do
     .next-publication
       =icon('angle-right')
+
+
+

@@ -52,6 +52,7 @@ class GroupsController < ApplicationController
 
   def get_comic
     @comic = Comic.find(params[:comic_id])
+    @q = Comic.ransack(params[:q])
   end
 
   def group_params

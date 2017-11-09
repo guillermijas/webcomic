@@ -7,7 +7,7 @@
         .comic
           .row
             .cover.col-md-4
-              -if (can? :read, @comic) || (@publications.count > 0) #|| (can? :read, @publications)
+              -if (can? :read, @comic) || (@comic.price.zero?)
                 = link_to(comic_publications_path(@comic)) do
                   -if @comic.cover.present?
                     =image_tag(image_path(@comic.cover))
@@ -25,7 +25,10 @@
             .details.col-md-8
               - if @comic.user_id == current_user.id
                 .center-content
+                  = link_to 'Edit comic', edit_comic_path(@comic), class: 'btn btn-secondary', type: 'button', style: 'margin-right: 40px'
                   = link_to 'New publication', new_comic_publication_path(@comic), class: 'btn btn-secondary', type: 'button'
+                %br
+                %br
               %h3.product-title.text-center
                 %strong= @comic.title
               %p.product-description
@@ -46,6 +49,13 @@
                 %b
                   Autor:
                 = @comic.user.full_name
+              %p
+                %b
+                  Last publication:
+                - if @comic.publications.last.present?
+                  = @comic.publications.last.created_at.strftime('%d-%m-%Y')
+                - else
+                  This comic does not have any publication yet
 
               .action
                 - if @comic.price > 0

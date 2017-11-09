@@ -20,7 +20,8 @@
         %br
         %div.pagination-lg.justify-content-center
           - if @comics.length > 1
-            .justify-content-center.badge.badge-light.page-link= will_paginate @comics
+            .center-content
+              = will_paginate @comics
 
     .col-md-2
       .sidebar-nav-fixed.pull-right.affix

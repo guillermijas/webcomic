@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :comics do
     collection do
-      get 'top_rated'
+      get 'my_comics'
       get 'free'
       get 'favourites'
       get 'pay_premium'

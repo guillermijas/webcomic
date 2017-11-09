@@ -1,26 +1,28 @@
-.outer_div
-  .centered.top_div
-    %br/
-    .inner_div
-      = link_to('Back to forum', comic_forum_path(@comic, @forum), class: 'btn btn-primary')
-      %h2= @thread.title
-      %p.text= @thread.description
-      %br/
-  .centered.top_div
-    .inner_div
-      %h4 Post your comment here:
-      = simple_form_for([@comic, @forum, @thread, @comment]) do |f|
-        = f.text_area :body
-        = f.submit 'Submit', class: 'btn btn-primary'
-      %br
-  #centered.top_div{:style => "background-color:#2e353d;"}
-    - @comments.each do |comment|
-      .inner_div
-        %p.text= comment.body
-        %p.info=comment.user.first_name
+= render partial: 'layouts/navbar'
 
-:javascript
-  function clearText(elem1,elem2) {
-    elem1.value='';
-    elem2.value='';
-  }
+.container-fluid
+  .row
+    .col-md-10
+      .centered.top_div
+        %br
+        .inner_div.header-div
+          %h2= @thread.title
+          %p.text= @thread.description
+          %br
+        .inner_div
+          %h4 Post your comment here:
+          = simple_form_for([@comic, @forum, @thread, @comment]) do |f|
+            = f.text_area :body, class: 'w-100'
+            = f.submit 'Submit', class: 'btn btn-primary'
+          %br
+      - if @comments.empty?
+        .inner_div.thread
+          This thread has no comments yet.
+      - else
+        - @comments.each do |comment|
+          .inner_div.thread
+            %p.text= comment.body
+            %p.info=comment.user.first_name
+    .col-md-2
+      .sidebar-nav-fixed.pull-right.affix
+        = image_tag(image_path('banner.gif'), class: 'd-inline-block advertising')

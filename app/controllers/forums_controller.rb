@@ -18,6 +18,7 @@ class ForumsController < ApplicationController
 
   def set_comic
     @comic = Comic.find(params[:comic_id])
+    @q = Comic.ransack(params[:q])
   end
 
   def forum_params
