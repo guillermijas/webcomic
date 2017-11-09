@@ -2,6 +2,7 @@ class ForumsController < ApplicationController
   before_action :set_forum, only: [:show, :edit, :update, :destroy]
   before_action :set_comic
   before_action :set_threads, only: :show
+  before_action :authenticate_user!
 
   def show
   end

@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: :destroy
   before_action :set_parent_resources
+  before_action :authenticate_user!
 
   def create
     @comment = Comment.new(comment_params)
