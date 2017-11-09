@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-#one:
-#  forum: one
-#  user: one
-#  title: MyString
-#  text:
-#
+one:
+  forum: one
+  user: ivan
+  title: MyString
+  description: prueba
+
 #two:
 #  forum: two
 #  user: two

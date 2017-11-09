@@ -1,6 +1,7 @@
 class PublicationsController < ApplicationController
   before_action :set_publication, only: [:show, :edit, :update, :destroy]
   before_action :set_comic
+  before_action :authenticate_user!
 
   def index
     if @comic.publications.empty?

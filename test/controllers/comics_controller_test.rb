@@ -23,28 +23,26 @@ class ComicsControllerTest < ActionDispatch::IntegrationTest
       post comics_url, params: {
           comic: {
               average_rating: @comic.average_rating, category: @comic.category, price: @comic.price,
-              title: @comic.title, user_id: @comic.user_id
+              title: @comic.title
           }
       }
     end
-
-    # assert_redirected_to comic_url(@comic)
+    assert_equal(@comic.id, Comic.find(@comic.id).id)
+    assert_equal(@user.id, Comic.last.user_id)
+    assert_not_nil(Forum.find_by(comic: Comic.last, topic: 'General'))
+    assert_not_nil(Forum.find_by(comic: Comic.last, topic: 'Speculate'))
+    assert_redirected_to comic_path(Comic.last)
   end
 
-# test "should show comic" do
-#   get comic_url(@comic)
-#   assert_response :success
-# end
-#
-# test "should get edit" do
-#   get edit_comic_url(@comic)
-#   assert_response :success
-# end
-#
-test "should update comic" do
-  patch comic_url(@comic), params: { comic: { average_rating: @comic.average_rating, category: @comic.category, price: @comic.price, title: @comic.title, user_id: @comic.user_id } }
-  assert_redirected_to comic_url(@comic)
-end
+  test "should update comic" do
+    patch comic_url(@comic), params: {
+        comic: {
+            average_rating: @comic.average_rating, category: @comic.category, price: @comic.price, title: @comic.title,
+            user_id: @comic.user_id
+        }
+    }
+    assert_redirected_to comic_url(@comic)
+  end
 
   test "should destroy comic" do
     assert_difference('Comic.count', -1) do

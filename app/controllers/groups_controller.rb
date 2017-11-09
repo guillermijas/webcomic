@@ -4,6 +4,8 @@ class GroupsController < ApplicationController
   before_action :get_comment
   before_action :get_forum
   before_action :get_comic
+  before_action :authenticate_user!
+
 
   def show
   end
