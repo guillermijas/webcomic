@@ -25,4 +25,5 @@
             %p.info=comment.user.first_name
     .col-md-2
       .sidebar-nav-fixed.pull-right.affix
-        = image_tag(image_path('banner.gif'), class: 'd-inline-block advertising')
+        - unless current_user.premium_until.present? && current_user.premium_until > Time.zone.now
+          = image_tag(image_path('banner.gif'), class: 'd-inline-block advertising')
