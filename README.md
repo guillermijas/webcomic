@@ -1,24 +1,10 @@
-# README
+# Filmo
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Film recommendation service, based on Ruby on Rails and R, neural networks and IMDB API.
 
-Things you may want to cover:
+* Ruby version: 2.4.2
 
-* Ruby version
+* System dependencies: R (latest version)
 
-* System dependencies
+* Installation: Typical installation for a RoR project
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
