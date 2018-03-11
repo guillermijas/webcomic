@@ -1,10 +1,10 @@
-# Filmo
+# WebComic
 
-Film recommendation service, based on Ruby on Rails and R, neural networks and IMDB API.
+Website featuring online reader and comics/publications uploader.
 
-* Ruby version: 2.4.2
+* Ruby version: 2.4.3
 
-* System dependencies: R (latest version)
+* System dependencies: None
 
 * Installation: Typical installation for a RoR project
 
